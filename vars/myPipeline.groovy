@@ -18,14 +18,32 @@ def call(Map params) {
                 }
                 }
             }
-            stage('Test') {
+            stage('Terraform Init') {
                 steps {
                     println "Provisioning in ${env.environment}"
+                    sh 'cd terraform-aws/${env.environment}'
+                    sh 'terraform init'
                 }
             }
-            stage('Deploy') {
+            stage('Terraform plan') {
                 steps {
-                    echo 'Deploying...'
+                    sh 'terraform plan -out=tfplan'
+                }
+            }
+            stage('Terraform apply') {
+                steps {
+                    script{
+                     def userInput = input(
+                        id: 'terraform-apply',
+                        message: 'Do you want to apply the Terraform plan?',
+                        parameters: [booleanParam(defaultValue: false, description: 'Yes or No', name: 'APPROVE')]
+                    )
+                    if (userInput['APPROVE']) {
+                        sh 'terraform apply tfplan'
+                    } else {
+                        error('Terraform apply was not approved by the user.')
+                    }
+                    }
                 }
             }
         }
