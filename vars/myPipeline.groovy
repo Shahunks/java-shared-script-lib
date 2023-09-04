@@ -1,5 +1,5 @@
 // myPipeline.groovy
-import com.example.pipeline.checkOut
+import com.example.pipeline.util.checkOut
 
 
 def call(Map params) {
