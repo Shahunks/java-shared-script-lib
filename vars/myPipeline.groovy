@@ -21,7 +21,7 @@ def call(Map params) {
             stage('Terraform Init') {
                 steps {
                     println "Provisioning in ${env.environment}"
-                    sh 'cd terraform-aws/${env.environment}'
+                    sh 'cd practical-test-dx-shashank/terraform-aws/'${env.environment}
                     sh 'terraform init'
                 }
             }
