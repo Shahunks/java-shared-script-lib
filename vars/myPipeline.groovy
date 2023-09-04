@@ -20,9 +20,11 @@ def call(Map params) {
             }
             stage('Terraform Init') {
                 steps {
+                    script{
                     println "Provisioning in ${env.environment}"
                     sh 'cd practical-test-dx-shashank/terraform-aws/'${env.environment}
                     sh 'terraform init'
+                    }
                 }
             }
             stage('Terraform plan') {
