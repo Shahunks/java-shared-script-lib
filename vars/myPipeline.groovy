@@ -20,7 +20,7 @@ def call(Map params) {
             }
             stage('Test') {
                 steps {
-                    echo 'Provisioning in $env.environment'
+                    println "Provisioning in ${env.environment}"
                 }
             }
             stage('Deploy') {
