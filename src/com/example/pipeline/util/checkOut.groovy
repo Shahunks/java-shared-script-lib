@@ -1,9 +1,9 @@
-package com.example.mypackage
+package com.example.pipeline.util
 
-def checkout(String repoUrl, String targetDir) {
+def call(Map params) {
     try {
         echo "Cloning repository from ${repoUrl} to ${targetDir}"
-        sh "git clone ${repoUrl} ${targetDir}"
+        sh "git clone ${params.repoUrl} ${params.targetDir}"
     } catch (Exception e) {
         error "Failed to clone repository from ${repoUrl}. Error: ${e.getMessage()}"
     }

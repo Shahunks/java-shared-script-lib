@@ -1,9 +1,10 @@
 // myPipeline.groovy
-import com.example.mypackage.myscript
+import com.example.mypackage.checkOut
+
 
 def call(Map params) {
-   def repo = params.repo
-   def targetDir = params.targetDir
+    env.repo = params.repo
+   env.targetDir = params.targetDir
     pipeline {
         agent any
         
@@ -12,8 +13,8 @@ def call(Map params) {
             stage('Build') {
                 steps {
                    script {
-                   // myscript.checkout("$repo","$targetDir")
-                   println("$repo")
+                   new checkOut().call(params)
+                  
                 }
                     echo 'Building...'
                 }
