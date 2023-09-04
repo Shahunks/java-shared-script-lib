@@ -1,6 +1,6 @@
 package com.example.mypackage
 
-def myscript(String repoUrl, String targetDir) {
+def call(String repoUrl, String targetDir) {
     try {
         echo "Cloning repository from ${repoUrl} to ${targetDir}"
         sh "git clone ${repoUrl} ${targetDir}"
