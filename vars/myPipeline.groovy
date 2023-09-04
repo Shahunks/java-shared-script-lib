@@ -4,24 +4,21 @@ import com.example.pipeline.util.checkOut
 
 def call(Map params) {
     env.repo = params.repo
-   env.targetDir = params.branch
+    env.targetDir = params.branch
+    env.environment = params.environment
     pipeline {
         agent any
         
         stages {
         
-            stage('Build') {
+            stage('checkout') {
                 steps {
-                   script {
                    new checkOut().call(params)
-                  
-                }
-                    echo 'Building...'
                 }
             }
             stage('Test') {
                 steps {
-                    echo 'Testing...'
+                    echo 'Provisioning in $env.environment'
                 }
             }
             stage('Deploy') {
