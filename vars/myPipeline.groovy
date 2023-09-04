@@ -20,9 +20,9 @@ def call(Map params) {
             }
             stage('Terraform Init') {
                 steps {
+                    withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
                     script{
                     println "Provisioning in ${env.environment}"
-                    withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
                     sh '''
                     cd terraform-aws/"$environment"
                     terraform init
