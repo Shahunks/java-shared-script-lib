@@ -4,7 +4,7 @@ import com.example.pipeline.util.checkOut
 
 def call(Map params) {
     env.repo = params.repo
-   env.targetDir = params.targetDir
+   env.targetDir = params.branch
     pipeline {
         agent any
         
