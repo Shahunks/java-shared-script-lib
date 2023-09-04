@@ -2,11 +2,12 @@
 import com.example.mypackage.myscript
 
 def call(Map params) {
-   def name = params.name
+   
     pipeline {
         agent any
         
         stages {
+        def name = params.name
             stage('Build') {
                 steps {
                      sayHello($name)
