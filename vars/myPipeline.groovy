@@ -2,14 +2,14 @@
 import org.example
 
 def call(Map params) {
-   def pipelineparameters.name = params.name
+   def name = params.name
     pipeline {
         agent any
         
         stages {
             stage('Build') {
                 steps {
-                     sayHello($pipelineparameters.name)
+                     sayHello($name)
                     echo 'Building...'
                 }
             }
