@@ -12,7 +12,7 @@ def call(Map params) {
             stage('Build') {
                 steps {
                    script {
-                    myscript("$repo","$targetDir")
+                    myscript.checkout("$repo","$targetDir")
                 }
                     echo 'Building...'
                 }
