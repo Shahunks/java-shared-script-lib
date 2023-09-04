@@ -1,5 +1,5 @@
 // myPipeline.groovy
-import org.example
+import com.example.mypackage.myscript
 
 def call(Map params) {
    def name = params.name
