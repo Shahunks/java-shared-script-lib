@@ -22,8 +22,10 @@ def call(Map params) {
                 steps {
                     script{
                     println "Provisioning in ${env.environment}"
-                    sh 'cd terraform-aws && ls'
-                    sh 'terraform init'
+                    sh '''
+                    cd terraform-aws/${env.environment}
+                    sh terraform init
+                    '''
                     }
                 }
             }
