@@ -13,7 +13,9 @@ def call(Map params) {
         
             stage('checkout') {
                 steps {
+                    script{
                    new checkOut().call(params)
+                }
                 }
             }
             stage('Test') {
