@@ -1,12 +1,15 @@
 // myPipeline.groovy
+import org.example
 
-def call() {
+def call(Map params) {
+   def pipelineparameters.name = params.name
     pipeline {
         agent any
         
         stages {
             stage('Build') {
                 steps {
+                     sayHello($pipelineparameters.name)
                     echo 'Building...'
                 }
             }
