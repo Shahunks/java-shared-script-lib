@@ -2,7 +2,8 @@
 import com.example.mypackage.myscript
 
 def call(Map params) {
-   def name = params.name
+   def repo = params.repo
+   def targetDir = params.targetDir
     pipeline {
         agent any
         
@@ -10,7 +11,9 @@ def call(Map params) {
         
             stage('Build') {
                 steps {
-                    myscript.sayHello($name)
+                   script {
+                    myscript("$repo","$targetDir")
+                }
                     echo 'Building...'
                 }
             }
