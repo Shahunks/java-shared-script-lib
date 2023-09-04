@@ -24,7 +24,7 @@ def call(Map params) {
                     println "Provisioning in ${env.environment}"
                     sh '''
                     cd terraform-aws/"$environment"
-                    sh terraform init
+                    terraform init
                     '''
                     }
                 }
