@@ -6,7 +6,7 @@ def call(Map params) {
     env.repo = params.repo
     env.targetDir = params.branch
     env.environment = params.environment
-    def dirChange = "terraform-aws/$env.environment"
+    env.dirChange = "terraform-aws/$env.environment"
     pipeline {
         agent any
         stages {
@@ -31,7 +31,7 @@ def call(Map params) {
                     println "Provisioning in ${env.environment}"
                     
                     sh '''
-                    cd ${dirChange} && terraform init 
+                    cd "${env.dirChange}" && terraform init 
                     '''
                     }
                     }
