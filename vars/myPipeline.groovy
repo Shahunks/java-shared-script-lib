@@ -29,9 +29,7 @@ def call(Map params) {
                         credentialsId: 'AWS'
                     ]]) {
                     println "Provisioning in ${env.environment}"                
-                    sh '''
-                    cd \$dirChange && terraform init 
-                    '''
+                    sh """cd ${dirChange} && terraform init"""
                     }
                     }
                     }
@@ -39,7 +37,7 @@ def call(Map params) {
             stage('Terraform plan') {
                 steps {
                     script {
-                    sh 'cd $dirchange && terraform plan'
+                    sh """cd ${dirChange} &&&& terraform plan"""
                     }
                 }
             }
@@ -52,7 +50,7 @@ def call(Map params) {
                         parameters: [booleanParam(defaultValue: false, description: 'Yes or No', name: 'APPROVE')]
                     )
                     if (userInput['APPROVE']) {
-                        sh 'cd $dirchange && terraform apply'
+                        sh """cd ${dirChange} && terraform apply"""
                     } else {
                         error('Terraform apply was not approved by the user.')
                     }
