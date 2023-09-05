@@ -1,6 +1,5 @@
 // myPipeline.groovy
 import com.example.pipeline.util.checkOut
-import com.example.pipeline.util.credAws
 
 def call(Map params) {
     env.repo = params.repo
@@ -9,6 +8,7 @@ def call(Map params) {
     def dirChange = "terraform-aws/$env.environment"
     pipeline {
         agent any
+        
         stages {
         
             stage('checkout') {
@@ -37,8 +37,9 @@ def call(Map params) {
             stage('Terraform plan') {
                 steps {
                     script {
-                    new credAws().call()
+                   withAWS(credentials: 'AWS'){
                     sh """cd ${dirChange} && terraform plan"""
+                   }
                     }
                 }
             }
