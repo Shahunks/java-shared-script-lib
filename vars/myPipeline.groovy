@@ -39,7 +39,7 @@ def call(Map params) {
                 }
             stage('Terraform plan') {
                 steps {
-                    sh 'terraform plan -out=tfplan'
+                    sh 'terraform plan'
                 }
             }
             stage('Terraform apply') {
@@ -51,7 +51,7 @@ def call(Map params) {
                         parameters: [booleanParam(defaultValue: false, description: 'Yes or No', name: 'APPROVE')]
                     )
                     if (userInput['APPROVE']) {
-                        sh 'terraform apply tfplan'
+                        sh 'terraform apply'
                     } else {
                         error('Terraform apply was not approved by the user.')
                     }
