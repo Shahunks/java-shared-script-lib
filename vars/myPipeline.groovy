@@ -31,7 +31,7 @@ def call(Map params) {
                     println "Provisioning in ${env.environment}"
                     sh '''
                     cd terraform-aws/"$environment"
-                    terraform init
+                    terraform init 
                     '''
                     }
                     }
@@ -39,7 +39,7 @@ def call(Map params) {
                 }
             stage('Terraform plan') {
                 steps {
-                    sh 'terraform plan'
+                    sh 'ls -la && terraform plan'
                 }
             }
             stage('Terraform apply') {
