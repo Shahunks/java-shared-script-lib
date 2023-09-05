@@ -27,12 +27,13 @@ def call(Map params) {
                         accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
                         credentialsId: 'AWS'
-                    ]]) 
+                    ]]) {
                     println "Provisioning in ${env.environment}"
                     sh '''
                     cd terraform-aws/"$environment"
                     terraform init
                     '''
+                    }
                     }
                     }
                 }
