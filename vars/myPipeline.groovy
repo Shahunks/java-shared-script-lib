@@ -37,7 +37,7 @@ def call(Map params) {
             stage('Terraform plan') {
                 steps {
                     script {
-                    sh """cd ${dirChange} &&&& terraform plan"""
+                    sh """cd ${dirChange} && terraform plan"""
                     }
                 }
             }
