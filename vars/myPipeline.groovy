@@ -31,7 +31,7 @@ def call(Map params) {
                     println "Provisioning in ${env.environment}"
                     
                     sh '''
-                    cd "${env.dirChange}" && terraform init 
+                    cd ${env.dirChange} && terraform init 
                     '''
                     }
                     }
