@@ -6,6 +6,7 @@ def call(Map params) {
     env.repo = params.repo
     env.targetDir = params.branch
     env.environment = params.environment
+    def dirchange = "terraform-aws/$env.environment"
     pipeline {
         agent any
         stages {
@@ -21,7 +22,6 @@ def call(Map params) {
                 steps {
                     
                     script{
-                    def targetDir = "terraform-aws/${environment}"
                     withCredentials([[
                          $class: 'AmazonWebServicesCredentialsBinding',
                         accessKeyVariable: 'AWS_ACCESS_KEY_ID',
@@ -29,11 +29,10 @@ def call(Map params) {
                         credentialsId: 'AWS'
                     ]]) {
                     println "Provisioning in ${env.environment}"
-                    dir(targetDir) {
+                    
                     sh '''
-                    terraform init 
+                    cd $dirchange && terraform init 
                     '''
-                    }
                     }
                     }
                     }
@@ -41,7 +40,7 @@ def call(Map params) {
             stage('Terraform plan') {
                 steps {
                     script {
-                    sh 'terraform plan'
+                    sh 'cd $dirchange && terraform plan'
                     }
                 }
             }
@@ -54,7 +53,7 @@ def call(Map params) {
                         parameters: [booleanParam(defaultValue: false, description: 'Yes or No', name: 'APPROVE')]
                     )
                     if (userInput['APPROVE']) {
-                        sh 'terraform apply'
+                        sh 'cd $dirchange && terraform apply'
                     } else {
                         error('Terraform apply was not approved by the user.')
                     }
