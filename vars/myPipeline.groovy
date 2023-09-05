@@ -37,7 +37,7 @@ def call(Map params) {
             stage('Terraform plan') {
                 steps {
                     script {
-                    new credAws()
+                    new credAws().call()
                     sh """cd ${dirChange} && terraform plan"""
                     }
                 }
