@@ -6,4 +6,5 @@ withCredentials([[
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
                         credentialsId: 'AWS'
                     ]])
+                    return
 }
