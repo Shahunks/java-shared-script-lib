@@ -36,7 +36,6 @@ def call(Map params) {
                     }
                     }
                 }
-            }
             stage('Terraform plan') {
                 steps {
                     sh 'terraform plan -out=tfplan'
