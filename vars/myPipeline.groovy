@@ -6,7 +6,7 @@ def call(Map params) {
     env.repo = params.repo
     env.targetDir = params.branch
     env.environment = params.environment
-    env.dirChange = "terraform-aws/$env.environment"
+    def dirChange = "terraform-aws/$env.environment"
     pipeline {
         agent any
         stages {
@@ -28,10 +28,9 @@ def call(Map params) {
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
                         credentialsId: 'AWS'
                     ]]) {
-                    println "Provisioning in ${env.environment}"
-                    
+                    println "Provisioning in ${env.environment}"                
                     sh '''
-                    cd ${env.dirChange} && terraform init 
+                    cd \$dirChange && terraform init 
                     '''
                     }
                     }
