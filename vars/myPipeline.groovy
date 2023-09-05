@@ -9,7 +9,7 @@ def call(Map params) {
     pipeline {
         agent any
         environment {
-        WORKSPACE_DIR = "terraform-aws/${environment}"
+        WORKSPACE_DIR = pwd()
     }
         
         stages {
@@ -34,6 +34,7 @@ def call(Map params) {
                     println "Provisioning in ${env.environment}"
                     dir(WORKSPACE_DIR) {
                     sh '''
+                    cd "terraform-aws/${environment}"
                     terraform init 
                     '''
                     }
