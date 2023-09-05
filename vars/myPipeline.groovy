@@ -8,7 +8,6 @@ def call(Map params) {
     env.environment = params.environment
     pipeline {
         agent any
-        
         stages {
         
             stage('checkout') {
@@ -42,9 +41,7 @@ def call(Map params) {
             stage('Terraform plan') {
                 steps {
                     script {
-                    dir(targetDir) {
                     sh 'terraform plan'
-                    }
                     }
                 }
             }
