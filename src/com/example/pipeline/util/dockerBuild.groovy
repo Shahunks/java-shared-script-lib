@@ -12,6 +12,7 @@ def call(Map params) {
                     else
                     docker tag test-dx:${params.version} 193566561588.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:${params.version}
                     fi
+                    fi
                     
                     """
 
