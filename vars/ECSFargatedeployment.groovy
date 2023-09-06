@@ -27,7 +27,6 @@ def call(Map params) {
                     println "Building for ${env.environment}"            
                     sh """ 
                     aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 193566561588.dkr.ecr.ap-southeast-2.amazonaws.com
-                    ls -la
                     docker build -t test-dx:${env.version} .
                     docker tag test-dx:${env.version} 193566561588.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:${env.version}
                     """
@@ -38,7 +37,7 @@ def call(Map params) {
             stage('Docker push') {
                 steps {
                     script {
-                    sh """docker push ${env.awsAccountId}.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:${env.version}"""
+                    sh """docker push 193566561588.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:${env.version}"""
                     }
                 }
             }
