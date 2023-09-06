@@ -20,16 +20,16 @@ def call(Map params) {
                 }
                 }
             }
-            stage('Docker Build and Push') {
-                steps { 
-                    script{ 
-                    withAWS(credentials: 'AWS'){
-                    println "Building for ${env.environment}"   
-                    new dockerBuildAndPush().call(params)         
-                    }
-                    }
-                    }
-                }
+            // stage('Docker Build and Push') {
+            //     steps { 
+            //         script{ 
+            //         withAWS(credentials: 'AWS'){
+            //         println "Building for ${env.environment}"   
+            //         new dockerBuildAndPush().call(params)         
+            //         }
+            //         }
+            //         }
+            //     }
             stage('Deploy') {
                 steps {
                     script {
