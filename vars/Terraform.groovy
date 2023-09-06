@@ -41,6 +41,7 @@ def call(Map params) {
             stage('Terraform apply') {
                 steps {
                     script{
+                    withAWS(credentials: 'AWS'){
                      def userInput = input(
                         id: 'terraform-apply',
                         message: 'Do you want to apply the Terraform plan?',
@@ -51,6 +52,7 @@ def call(Map params) {
                         sh """cd ${dirChange} && terraform apply"""
                     } else {
                         error('Terraform apply was not approved by the user.')
+                    }
                     }
                     }
                 }
