@@ -16,6 +16,6 @@ def updatedJson = JsonOutput.toJson(jsonMap)
 
 new File(jsonFilePath).text = updatedJson
 
-sh 'aws --profile default ecs update-service --service my-first-service --task-definition my-first-task --cli-input-json file:file.json'
+//sh 'aws --profile default ecs update-service --service my-first-service --task-definition my-first-task --cli-input-json file:file.json'
 
 }
