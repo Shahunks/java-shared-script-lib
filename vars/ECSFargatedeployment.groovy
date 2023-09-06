@@ -11,7 +11,6 @@ def call(Map params) {
     pipeline {
         agent any
         stages {
-        
             stage('checkout') {
                 steps {
                     script{
