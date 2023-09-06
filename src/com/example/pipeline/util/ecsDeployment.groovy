@@ -13,5 +13,6 @@ jsonMap.taskDefinition.containerDefinitions[0].image = newImageValue
 def updatedJson = JsonOutput.toJson(jsonMap)
 
 new File(jsonFilePath).text = updatedJson
-println(updatedJson)
+println(workspacePath)
+
 }
