@@ -18,26 +18,26 @@ def call(Map params) {
                 }
                 }
             }
-            // stage('Terraform Init') {
-            //     steps {
+            stage('Terraform Init') {
+                steps {
                     
-            //         script{
-            //         withAWS(credentials: 'AWS'){
-            //         println "Provisioning in ${env.environment}"                
-            //         sh """cd ${dirChange} && terraform init"""
-            //         }
-            //         }
-            //         }
-            //     }
-            // stage('Terraform plan') {
-            //     steps {
-            //         script {
-            //        withAWS(credentials: 'AWS'){
-            //         sh """cd ${dirChange} && terraform plan"""
-            //        }
-            //         }
-            //     }
-            // }
+                    script{
+                    withAWS(credentials: 'AWS'){
+                    println "Provisioning in ${env.environment}"                
+                    sh """cd ${dirChange} && terraform init"""
+                    }
+                    }
+                    }
+                }
+            stage('Terraform plan') {
+                steps {
+                    script {
+                   withAWS(credentials: 'AWS'){
+                    sh """cd ${dirChange} && terraform plan"""
+                   }
+                    }
+                }
+            }
             stage('Terraform apply') {
                 steps {
                     script{
@@ -49,7 +49,7 @@ def call(Map params) {
                     )
                     def isApproved = userInput.toBoolean()
                     if (isApproved) {
-                        sh """cd ${dirChange} && terraform destroy -auto-approve"""
+                        sh """cd ${dirChange} && terraform apply -auto-approve"""
                     } else {
                         error('Terraform apply was not approved by the user.')
                     }
