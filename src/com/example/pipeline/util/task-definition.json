@@ -1,55 +1,24 @@
 {
-    "taskDefinition": {
-        "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:193566561588:task-definition/my-first-task:15",
-        "containerDefinitions": [
-            {
-                "name": "my-first-task",
-                "image": "193566561588.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:v5",
-                "cpu": 256,
-                "memory": 512,
-                "portMappings": [
-                    {
-                        "containerPort": 10000,
-                        "hostPort": 10000,
-                        "protocol": "tcp"
-                    }
-                ],
-                "essential": true,
-                "environment": [],
-                "mountPoints": [],
-                "volumesFrom": []
-            }
-        ],
-        "family": "my-first-task",
-        "executionRoleArn": "arn:aws:iam::193566561588:role/ecsTaskExecutionRole",
-        "networkMode": "awsvpc",
-        "revision": 15,
-        "volumes": [],
-        "status": "ACTIVE",
-        "requiresAttributes": [
-            {
-                "name": "com.amazonaws.ecs.capability.ecr-auth"
-            },
-            {
-                "name": "ecs.capability.execution-role-ecr-pull"
-            },
-            {
-                "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-            },
-            {
-                "name": "ecs.capability.task-eni"
-            }
-        ],
-        "placementConstraints": [],
-        "compatibilities": [
-            "EC2",
-            "FARGATE"
-        ],
-        "requiresCompatibilities": [
-            "FARGATE"
-        ],
-        "cpu": "256",
-        "memory": "512"
-    },
-    "tags": []
-}
+    "containerDefinitions": [ 
+       {  
+          "essential": true,
+          "image": "93566561588.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:v5",
+          "name": "my-first-task",
+          "portMappings": [ 
+             { 
+                "containerPort": 10000,
+                "hostPort": 10000,
+                "protocol": "tcp"
+             }
+          ]
+       }
+    ],
+    "cpu": "256",
+    "executionRoleArn": "arn:aws:iam::193566561588:role/ecsTaskExecutionRole",
+    "family": "my-first-task",
+    "memory": "512",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [ 
+        "FARGATE" 
+     ]
+ }
