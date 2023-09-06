@@ -41,22 +41,6 @@ def call(Map params) {
                     }
                 }
             }
-            // stage('Terraform apply') {
-            //     steps {
-            //         script{
-            //          def userInput = input(
-            //             id: 'terraform-apply',
-            //             message: 'Do you want to apply the Terraform plan?',
-            //             parameters: [booleanParam(defaultValue: false, description: 'Yes or No', name: 'APPROVE')]
-            //         )
-            //         if (userInput['APPROVE']) {
-            //             sh """cd ${dirChange} && terraform apply"""
-            //         } else {
-            //             error('Terraform apply was not approved by the user.')
-            //         }
-            //         }
-            //     }
-            // }
         }
     }
 }
