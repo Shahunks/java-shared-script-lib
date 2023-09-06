@@ -34,7 +34,9 @@ def call(Map params) {
             stage('Deploy') {
                 steps {
                     script {
+                    withAWS(credentials: 'AWS'){
                     new ecsDeployment().call()
+                    }
                     }
                 }
             }
