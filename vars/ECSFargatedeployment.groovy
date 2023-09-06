@@ -1,6 +1,6 @@
-// myPipeline.groovy
 import com.example.pipeline.util.checkOut
 import com.example.pipeline.util.dockerBuildAndPush
+import com.example.pipeline.util.ECSDeployment
 
 def call(Map params) {
     env.repo = params.repo
@@ -34,7 +34,7 @@ def call(Map params) {
             stage('Deploy') {
                 steps {
                     script {
-                    println "Deploying"
+                    new ecsDeployment().call()
                     }
                 }
             }
