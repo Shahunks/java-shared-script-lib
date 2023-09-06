@@ -34,24 +34,7 @@ def call(Map params) {
                 steps {
                     script {
                     withAWS(credentials: 'AWS'){
-                    // Run the AWS CLI command to describe the ECS task definition
-                    def awsTaskDefinition = sh(
-                        script: """
-                            aws ecs describe-task-definition --task-definition my-first-task --region ap-southeast-2
-                        """,
-                        returnStdout: true
-                    ).trim()
-
-                    // Create a new JSON object with the task definition data
-                    def taskDefinitionJson = """
-                    {
-                        "taskDefinition": ${awsTaskDefinition}
-                    }
-                    """
-
-                    // Write the JSON to a new file
-                    writeFile file: '${workspace}/new-task-definition.json', text: taskDefinitionJson
-                    //sh 'aws ecs describe-task-definition --task-definition  my-first-task --region ap-southeast-2 > file.json'
+                    sh 'aws ecs describe-task-definition --task-definition  my-first-task --region ap-southeast-2  file://${WORKSPACE}/file.json'
                     new ecsDeployment().call()
                     }
                     }
