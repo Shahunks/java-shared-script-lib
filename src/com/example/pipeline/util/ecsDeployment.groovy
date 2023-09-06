@@ -4,7 +4,7 @@ import groovy.json.JsonOutput
 
 def call() {
   
-sh 'aws --profile default ecs describe-task-definition --task-definition  my-first-task  > file.json'
+//sh 'aws --profile default ecs describe-task-definition --task-definition  my-first-task  > file.json'
 def jsonFilePath = 'file.json' 
 def newImageValue = 'new-image-name:new-tag' 
 
