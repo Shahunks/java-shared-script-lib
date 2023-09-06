@@ -49,9 +49,7 @@
             "FARGATE"
         ],
         "cpu": "256",
-        "memory": "512",
-        "registeredAt": "2023-09-06T09:57:10.385000+00:00",
-        "registeredBy": "arn:aws:iam::193566561588:user/shanks"
+        "memory": "512"
     },
     "tags": []
 }
