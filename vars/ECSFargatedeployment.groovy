@@ -10,9 +10,6 @@ def call(Map params) {
     env.version = params.version
     pipeline {
         agent any
-        node{
-    env.workspacePath = pwd() 
-    }
         stages {
         
             stage('checkout') {
