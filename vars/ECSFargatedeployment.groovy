@@ -35,7 +35,7 @@ def call(Map params) {
                 steps {
                     script {
                     withAWS(credentials: 'AWS'){
-                    sh 'aws ecs describe-task-definition --task-definition  my-first-task  > file.json'
+                    sh 'aws ecs describe-task-definition --task-definition  my-first-task --region ap-southeast-1 > file.json'
                     new ecsDeployment().call()
                     }
                     }
