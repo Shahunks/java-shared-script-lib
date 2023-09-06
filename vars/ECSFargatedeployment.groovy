@@ -5,12 +5,14 @@ import com.example.pipeline.util.ecsDeployment
 def call(Map params) {
     env.repo = params.repo
     env.targetDir = params.branch
-    env.environment = params.environment
-    env.workspacePath = pwd() 
+    env.environment = params.environmen
     //env.awsAccountId = params.awsAccountId
     env.version = params.version
     pipeline {
         agent any
+        node{
+    env.workspacePath = pwd() 
+    }
         stages {
         
             stage('checkout') {
