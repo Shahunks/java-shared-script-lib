@@ -35,7 +35,7 @@ def call(Map params) {
                     new ecsDeployment().call(params)
                     //sh "aws ecs update-service --service my-first-service --task-definition my-first-task --cli-input-json file:///var/jenkins_home/workspace/ECS/ECS-fargate-deployment/task-definition.json --region ap-southeast-2 > /dev/null"
                     sh 'aws ecs register-task-definition --family my-first-task --cli-input-json file:///var/jenkins_home/workspace/ECS/ECS-fargate-deployment/task-definition.json --region ap-southeast-2' 
-                    sh 'aws ecs update-service --service my-first-service  --task-definition --task-definition my-first-task --region $awsRegion  > /dev/null'
+                    sh 'aws ecs update-service --service my-first-service  --task-definition --task-definition my-first-task --region  ap-southeast-2 > /dev/null'
                     }
                     }
                 }
