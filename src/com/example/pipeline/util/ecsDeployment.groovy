@@ -3,8 +3,8 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
 def call() {
-  
-def jsonFilePath = 'task-definition.json' 
+def workspacePath = pwd() 
+def jsonFilePath = "${workspacePath}/task-definition.json"
 def newImageValue = 'new-image-name:new-tag' 
 def jsonContents = new File(jsonFilePath).text
 def jsonMap = new JsonSlurper().parseText(jsonContents)
