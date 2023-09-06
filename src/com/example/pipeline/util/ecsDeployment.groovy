@@ -7,7 +7,7 @@ def call() {
 //sh 'aws --profile default ecs describe-task-definition --task-definition  my-first-task  > file.json'
 def jsonFilePath = '/var/jenkins_home/workspace/ECS/ECS-fargate-deployment/file.json' 
 def newImageValue = 'new-image-name:new-tag' 
-
+sh 'echo $(cat file.json | jq 'del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt)  | del(.registeredBy)') > file.json'
 def jsonContents = new File(jsonFilePath).text
 def jsonMap = new JsonSlurper().parseText(jsonContents)
 
