@@ -1,6 +1,6 @@
 import com.example.pipeline.util.checkOut
 import com.example.pipeline.util.dockerBuildAndPush
-import com.example.pipeline.util.ECSDeployment
+import com.example.pipeline.util.ecsDeployment
 
 def call(Map params) {
     env.repo = params.repo
