@@ -50,7 +50,7 @@ def call(Map params) {
                     """
 
                     // Write the JSON to a new file
-                    writeFile file: 'new-task-definition.json', text: taskDefinitionJson
+                    writeFile file: '${workspace}/new-task-definition.json', text: taskDefinitionJson
                     //sh 'aws ecs describe-task-definition --task-definition  my-first-task --region ap-southeast-2 > file.json'
                     new ecsDeployment().call()
                     }
