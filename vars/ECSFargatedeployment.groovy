@@ -6,12 +6,11 @@ def call(Map params) {
     env.repo = params.repo
     env.targetDir = params.branch
     env.environment = params.environment
-    def workspacePath = pwd() 
     //env.awsAccountId = params.awsAccountId
     env.version = params.version
     pipeline {
         agent any
-        
+        def workspacePath = pwd() 
         stages {
         
             stage('checkout') {
