@@ -43,7 +43,7 @@ def call(Map params) {
 
 //                     aws ecs update-service --service my-first-service --task-definition my-first-task --region ap-southeast-2 > /dev/null
 //                     """
-                    sh 'aws ecs update-service --cluster my-cluster --service my-first-service --force-new-deployment --region ap-southeast-2
+                    sh 'aws ecs update-service --cluster my-cluster --service my-first-service --force-new-deployment --region ap-southeast-2'
 
                     }
                     }
