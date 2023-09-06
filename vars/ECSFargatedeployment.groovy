@@ -6,7 +6,6 @@ def call(Map params) {
     env.repo = params.repo
     env.targetDir = params.branch
     env.environment = params.environment
-    def dirChange = "terraform-aws/$env.environment"
     //env.awsAccountId = params.awsAccountId
     env.version = params.version
     pipeline {
@@ -35,6 +34,7 @@ def call(Map params) {
                 steps {
                     script {
                     withAWS(credentials: 'AWS'){
+                    sh 'echo > file.json'
                     sh 'aws ecs describe-task-definition --task-definition  my-first-task --region ap-southeast-2 > file.json'
                     new ecsDeployment().call()
                     }
