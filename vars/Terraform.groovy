@@ -46,12 +46,11 @@ def call(Map params) {
                         message: 'Do you want to apply the Terraform plan?',
                         parameters: [booleanParam(defaultValue: false, description: 'Yes or No', name: 'APPROVE')]
                     )
-                    if (userInput) {
-                    if (userInput['APPROVE'] == true) {
+                    def isApproved = userInput.toBoolean()
+                    if (isApproved) {
                         sh """cd ${dirChange} && terraform apply"""
                     } else {
                         error('Terraform apply was not approved by the user.')
-                    }
                     }
                     }
                 }
