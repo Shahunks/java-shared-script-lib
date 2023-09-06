@@ -35,7 +35,7 @@ def call(Map params) {
                     script {
                     withAWS(credentials: 'AWS'){
 //                   sh "aws ecs describe-task-definition --task-definition  my-first-task --region ap-southeast-2  --output json > file.json"
-                    //sh 'ls -la'
+                    sh 'ls -la'
                     new ecsDeployment().call()
                     // sh """echo \$$$(cat file.json | jq 'del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt)  | del(.registeredBy)') > file.json
 
