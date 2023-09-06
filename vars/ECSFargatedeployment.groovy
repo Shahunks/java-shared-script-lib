@@ -35,11 +35,8 @@ def call(Map params) {
                     script {
                     withAWS(credentials: 'AWS'){
                     new ecsDeployment().call(params)
-                    node{
-                    def workspacePath = pwd()
-                    sh "aws ecs update-service --service my-first-service --task-definition my-first-task --cli-input-json file://${workspacePath}/task-definition.json --region ap-southeast-2 > /dev/null"
+                    sh "aws ecs update-service --service my-first-service --task-definition my-first-task --cli-input-json file://${env.workspacePath}task-definition.json --region ap-southeast-2 > /dev/null"
                     //sh 'aws ecs register-task-definition --cli-input-json file://${workspacePath}/task-definition.json'
-                    }
                     }
                     }
                 }
