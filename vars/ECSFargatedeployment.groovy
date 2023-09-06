@@ -37,9 +37,12 @@ def call(Map params) {
                     sh "aws ecs describe-task-definition --task-definition  my-first-task --region ap-southeast-2  --output json > file.json"
                     //sh 'ls && pwd'
                     new ecsDeployment().call()
-                    sh 'aws ecs register-task-definition --family my-first-task --cli-input-json file://file.json --region ap-southeast-2 > /dev/null'
+                    sh """echo $(cat file.json | jq 'del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt)  | del(.registeredBy)') > file.json
+'
+                    aws ecs register-task-definition --family my-first-task --cli-input-json file://file.json --region ap-southeast-2 > /dev/null
 
-                    sh 'aws ecs update-service --service my-first-service --task-definition my-first-task --region ap-southeast-2 > /dev/null'
+                    aws ecs update-service --service my-first-service --task-definition my-first-task --region ap-southeast-2 > /dev/null
+                    """
                     }
                     }
                 }
