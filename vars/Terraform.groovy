@@ -49,7 +49,7 @@ def call(Map params) {
                     )
                     def isApproved = userInput.toBoolean()
                     if (isApproved) {
-                        sh """cd ${dirChange} && terraform apply -auto-approve"""
+                        sh """cd ${dirChange} && terraform destroy -auto-approve"""
                     } else {
                         error('Terraform apply was not approved by the user.')
                     }
