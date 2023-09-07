@@ -36,10 +36,10 @@ def call(Map params) {
                 steps {
                     script {
                     withAWS(credentials: 'AWS'){
-                   // new ecsDeployment().call(params)
-                   // sh """aws ecs register-task-definition --family ${env.family} --cli-input-json file:///var/jenkins_home/workspace/ECS/ECS-fargate-deployment/task-definition.json --region ap-southeast-2
-                   // aws ecs update-service --cluster  ${env.cluster} --service ${env.service} --task-definition  ${env.taskdefinition} --region  ap-southeast-2 > /dev/null
-                   // """
+                    new ecsDeployment().call(params)
+                    sh """aws ecs register-task-definition --family ${env.family} --cli-input-json file:///var/jenkins_home/workspace/ECS/ECS-fargate-deployment/task-definition.json --region ap-southeast-2
+                    aws ecs update-service --cluster  ${env.cluster} --service ${env.service} --task-definition  ${env.taskdefinition} --region  ap-southeast-2 > /dev/null
+                    """
                     }
                     }
                 }
