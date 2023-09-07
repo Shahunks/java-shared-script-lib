@@ -17,6 +17,7 @@ package com.example.pipeline.util
 // }
 def call(Map params) {
 
+env.version = params.version
 
                sh 'echo $params.version'
                //   sh """ 
