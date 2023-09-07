@@ -3,9 +3,10 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
 def call(Map params) {
+ env.version = params.version
 def workspacePath = pwd() 
 def jsonFilePath = "${workspacePath}/task-definition.json"
-def newImageValue = "193566561588.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:${params.version}"
+def newImageValue = "193566561588.dkr.ecr.ap-southeast-2.amazonaws.com/test-dx:${env.version}"
 def jsonContents = new File(jsonFilePath).text
 def jsonMap = new JsonSlurper().parseText(jsonContents)
 
